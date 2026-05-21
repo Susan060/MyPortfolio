@@ -5,6 +5,9 @@ const cookieParser=require('cookie-parser')
 const authRoutes=require('./routes/auth.routes')
 const contactRoutes=require('./routes/contact.routes')
 const uploadRoutes = require("./routes/upload.routes");
+const caseStudyRoutes=require('./routes/casestudy.routes.js')
+const categoryRoutes=require('./routes/category.routes.js')
+const tagRoutes=require('./routes/tag.routes.js')
 
 const app=express()
 
@@ -44,5 +47,11 @@ app.use('/api/auth',authRoutes)
 app.use('/api/contact',contactRoutes)
 //cloudinary
 app.use("/api/upload", uploadRoutes);
+
+app.use('/api/categories',categoryRoutes)
+app.use('/api/tags',tagRoutes)
+
+//CaseStudies
+app.use('/api/case-studies',caseStudyRoutes)
 
 module.exports=app 

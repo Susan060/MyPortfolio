@@ -1,6 +1,6 @@
 const Contact = require("../models/contact.model.js");
 const { uploadToCloudinary, deleteFromCloudinary } = require("../utils/cloudinaryUpload.js")
-const sendReplyEmail = require("../utils/sendReplyEmail.js");
+const {sendReplyEmail} = require("../utils/sendReplyEmail.js");
 const DOMPurify = require("isomorphic-dompurify");
 
 // ✅ Sanitize HTML from Tiptap
