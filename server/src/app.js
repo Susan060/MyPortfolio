@@ -12,9 +12,8 @@ const tagRoutes=require('./routes/tag.routes.js')
 const app=express()
 
 const allowedOrigins = [
-  'http://localhost:3000', 
   'https://susan-adhikari.com.np/',
-  'https://www.prabeshghimire.com',
+  'http://localhost:3000', 
   // Add any other domains you need
 ];
 
