@@ -1,0 +1,7 @@
+name = "myportfolio"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+NEXT_PUBLIC_API_URL = "https://myportfolio-z5a5.onrender.com"
+NEXT_PUBLIC_SITE_URL = "https://susan-adhikari.com.np"
