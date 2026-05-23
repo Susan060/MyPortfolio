@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "pages:build": "npx @opennextjs/cloudflare build && node -e \"const fs=require('fs');const path=require('path');function copyDir(src,dest){fs.mkdirSync(dest,{recursive:true});fs.readdirSync(src).forEach(f=>{const s=path.join(src,f),d=path.join(dest,f);fs.statSync(s).isDirectory()?copyDir(s,d):fs.copyFileSync(s,d)});}fs.copyFileSync('.open-next/worker.js','.open-next/assets/_worker.js');copyDir('.open-next/cloudflare','.open-next/assets/cloudflare');copyDir('.open-next/middleware','.open-next/assets/middleware');copyDir('.open-next/server-functions','.open-next/assets/server-functions');copyDir('.open-next/.build','.open-next/assets/.build');\""
+    "pages:build": "npx @opennextjs/cloudflare build && node -e \"const fs=require('fs');const path=require('path');function copyDir(src,dest){fs.mkdirSync(dest,{recursive:true});fs.readdirSync(src).forEach(f=>{const s=path.join(src,f),d=path.join(dest,f);fs.statSync(s).isDirectory()?copyDir(s,d):fs.copyFileSync(s,d)});}fs.copyFileSync('.open-next/worker.js','.open-next/assets/_worker.js');copyDir('.open-next/cloudflare','.open-next/assets/cloudflare');copyDir('.open-next/middleware','.open-next/assets/middleware');copyDir('.open-next/server-functions','.open-next/assets/server-functions');copyDir('.open-next/.build','.open-next/assets/.build');copyDir('.open-next/cache','.open-next/assets/cache');\""
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.11",
