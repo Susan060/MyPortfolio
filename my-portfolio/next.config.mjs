@@ -14,6 +14,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/Susan_Adhikari_CV_v3.pdf",
+        destination: "/Susan_Adhikari_CV_v3.pdf",
+      },
+      {
         source: '/api/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
       },
