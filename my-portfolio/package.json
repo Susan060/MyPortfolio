@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "pages:build": "npx @opennextjs/cloudflare build && node -e \"require('fs').copyFileSync('.open-next/worker.js', '.open-next/assets/_worker.js')\""
+    "pages:build": "npx @opennextjs/cloudflare build && node -e \"const fs=require('fs-extra');fs.copySync('.open-next/worker.js','.open-next/assets/_worker.js');fs.copySync('.open-next/cloudflare','.open-next/assets/cloudflare');fs.copySync('.open-next/middleware','.open-next/assets/middleware');fs.copySync('.open-next/server-functions','.open-next/assets/server-functions');fs.copySync('.open-next/.build','.open-next/assets/.build');\""
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.11",
