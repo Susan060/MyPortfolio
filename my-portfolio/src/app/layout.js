@@ -5,7 +5,7 @@ import Footer from './components/(public)/Footer'
 
 
 export const metadata = {
-    title: "Susan Adhikari | MERN & Next.js Developer",
+    title: "Susan Adhikari | NEXT JS & MERN Developer",
     description: "Full-stack web developer specializing in MERN stack and Next.js. Building fast, scalable, and modern web applications with React, Node.js, Express, and MongoDB.",
 }
 

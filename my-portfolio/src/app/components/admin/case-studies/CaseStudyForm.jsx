@@ -42,6 +42,7 @@ const INITIAL_FORM = {
   results: "",
   testimonial: { quote: "", author: "", role: "" },
   metrics: [],
+  projectLinks: { live: "", github: "" },
 };
 
 export default function CaseStudyForm({ initialData = null }) {
@@ -74,7 +75,11 @@ export default function CaseStudyForm({ initialData = null }) {
       typeof initialData.tags[0] === "object";
 
     if (catsAreObjects && tagsAreObjects) {
-      setFormData({ ...INITIAL_FORM, ...initialData });
+      setFormData({
+        ...INITIAL_FORM,
+        ...initialData,
+        projectLinks: initialData.projectLinks ?? { live: "", github: "" },
+      });
       setResolved(true);
       return;
     }
@@ -104,6 +109,7 @@ export default function CaseStudyForm({ initialData = null }) {
         ...initialData,
         categories: allCats.filter((c) => categoryIds.includes(c._id)),
         tags: allTags.filter((t) => tagIds.includes(t._id)),
+        projectLinks: initialData.projectLinks ?? { live: "", github: "" },
       });
       setResolved(true);
     });
@@ -277,7 +283,7 @@ export default function CaseStudyForm({ initialData = null }) {
             type="button"
             onClick={() => handleSubmit("published")}
             disabled={isLoading}
-            className="px-4 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors disabled:opacity-50"
+            className="px-4 py-2 text-sm bg-[#2a7a8a] hover:bg-[#235f6e] text-white rounded-lg transition-colors disabled:opacity-50"
           >
             {isLoading
               ? "Saving..."
@@ -293,13 +299,13 @@ export default function CaseStudyForm({ initialData = null }) {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-6 mt-4 p-3 bg-red-50 border border-red-100 text-red-600 text-sm rounded-lg"
+          className="mx-6 mt-4 p-3 bg-[#e8f4f6] border border-[#2a7a8a]/20 text-[#2a7a8a] text-sm rounded-lg"
         >
           {error}
         </motion.div>
       )}
 
-      <div className="flex gap-6 p-6 ">
+      <div className="flex gap-6 p-6">
         {/* Left — Main Content */}
         <div className="flex-1 space-y-4">
 
@@ -333,7 +339,7 @@ export default function CaseStudyForm({ initialData = null }) {
                   <button
                     type="button"
                     onClick={() => setIsSlugEditing(true)}
-                    className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-500 transition-colors"
+                    className="flex items-center gap-1 text-xs text-gray-400 hover:text-[#2a7a8a] transition-colors"
                   >
                     <Pencil size={10} />
                     Edit
@@ -342,8 +348,8 @@ export default function CaseStudyForm({ initialData = null }) {
               </div>
 
               {isSlugEditing ? (
-                <div className="rounded-lg border border-red-200 bg-red-50/40 p-3 space-y-2.5">
-                  <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-md px-2.5 py-1.5 focus-within:border-red-400 transition-colors">
+                <div className="rounded-lg border border-[#2a7a8a]/30 bg-[#e8f4f6]/40 p-3 space-y-2.5">
+                  <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-md px-2.5 py-1.5 focus-within:border-[#2a7a8a] transition-colors">
                     <span className="text-xs text-gray-400 shrink-0 select-none">
                       /case-studies/
                     </span>
@@ -364,7 +370,7 @@ export default function CaseStudyForm({ initialData = null }) {
                     <button
                       type="button"
                       onClick={handleSlugConfirm}
-                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#2a7a8a] hover:bg-[#235f6e] text-white rounded-md transition-colors"
                     >
                       <Check size={11} />
                       Confirm
@@ -406,7 +412,7 @@ export default function CaseStudyForm({ initialData = null }) {
               <span
                 className={`text-xs ${
                   formData.description.length > 160
-                    ? "text-red-500"
+                    ? "text-[#2a7a8a]"
                     : "text-gray-400"
                 }`}
               >
@@ -585,6 +591,50 @@ export default function CaseStudyForm({ initialData = null }) {
             />
           </motion.div>
 
+          {/* Project Links */}
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.09 }}
+            className="bg-white rounded-lg p-4 border border-gray-200 space-y-3"
+          >
+            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
+              Project Links
+            </label>
+            <div className="space-y-2">
+              <div className="space-y-1">
+                <span className="text-xs text-gray-400">Live URL</span>
+                <input
+                  type="url"
+                  placeholder="https://yourproject.com"
+                  value={formData.projectLinks?.live || ""}
+                  onChange={(e) =>
+                    handleChange("projectLinks", {
+                      ...formData.projectLinks,
+                      live: e.target.value,
+                    })
+                  }
+                  className="w-full text-sm border border-gray-200 rounded-lg p-2 outline-none focus:border-gray-400"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-xs text-gray-400">GitHub URL</span>
+                <input
+                  type="url"
+                  placeholder="https://github.com/username/repo"
+                  value={formData.projectLinks?.github || ""}
+                  onChange={(e) =>
+                    handleChange("projectLinks", {
+                      ...formData.projectLinks,
+                      github: e.target.value,
+                    })
+                  }
+                  className="w-full text-sm border border-gray-200 rounded-lg p-2 outline-none focus:border-gray-400"
+                />
+              </div>
+            </div>
+          </motion.div>
+
           {/* Services Provided */}
           <motion.div
             initial={{ opacity: 0, x: 10 }}
@@ -619,7 +669,7 @@ export default function CaseStudyForm({ initialData = null }) {
                           formData.servicesProvided.filter((x) => x !== s)
                         )
                       }
-                      className="hover:text-red-500 transition-colors"
+                      className="hover:text-[#2a7a8a] transition-colors"
                     >
                       <X size={10} />
                     </button>
@@ -658,7 +708,7 @@ export default function CaseStudyForm({ initialData = null }) {
                 <button
                   type="button"
                   onClick={handleAddMetric}
-                  className="shrink-0 px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
+                  className="shrink-0 px-3 py-2 bg-[#2a7a8a] hover:bg-[#235f6e] text-white rounded-lg transition-colors"
                 >
                   <Plus size={14} />
                 </button>
@@ -672,11 +722,11 @@ export default function CaseStudyForm({ initialData = null }) {
                     className="flex items-center justify-between text-xs bg-gray-50 px-3 py-2 rounded-lg"
                   >
                     <span className="text-gray-500">{m.label}</span>
-                    <span className="font-bold text-red-500">{m.value}</span>
+                    <span className="font-bold text-[#2a7a8a]">{m.value}</span>
                     <button
                       type="button"
                       onClick={() => handleRemoveMetric(i)}
-                      className="text-gray-300 hover:text-red-500 transition-colors"
+                      className="text-gray-300 hover:text-[#2a7a8a] transition-colors"
                     >
                       <X size={10} />
                     </button>
@@ -721,7 +771,7 @@ export default function CaseStudyForm({ initialData = null }) {
                           formData.keywords.filter((k) => k !== kw)
                         )
                       }
-                      className="hover:text-red-500 transition-colors"
+                      className="hover:text-[#2a7a8a] transition-colors"
                     >
                       <X size={10} />
                     </button>

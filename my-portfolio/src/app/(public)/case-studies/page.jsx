@@ -1,8 +1,8 @@
 import ClientCasePage from "./ClientCasePage";
 
 export const metadata = {
-  title: "SEO Case Studies & Results | Prabesh Ghimire",
-  description: "Explore real SEO case studies by Prabesh Ghimire showing traffic growth, keyword rankings, and revenue impact through data-driven strategies."
+  title: "Web Development Projects & Case Studies | Susan Adhikari",
+  description: "Explore real-world Next.js and MERN stack projects by Susan Adhikari showcasing full-stack solutions, performance results, and technical problem-solving."
 };
 
 export default function CaseStudiesPage() {

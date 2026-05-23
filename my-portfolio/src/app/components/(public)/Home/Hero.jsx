@@ -93,7 +93,7 @@ export default function HeroSection() {
               <ArrowRight size={15} />
             </motion.button>
             <motion.button
-              onClick={() => router.push("/projects")}
+              onClick={() => router.push("/case-studies")}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 font-semibold text-sm rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
@@ -135,11 +135,11 @@ export default function HeroSection() {
                 alt="Profile Photo"
                 width={600}
                 height={500}
-                className="w-full h-[440px] object-cover object-center"
+                className="w-full h-110 object-cover object-center"
                 priority
               />
               {/* subtle bottom fade */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d2d3a]/10 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0d2d3a]/10 via-transparent to-transparent" />
             </div>
 
             {/* Top-right floating chip — Responsive Design */}

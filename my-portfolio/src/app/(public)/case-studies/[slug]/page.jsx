@@ -5,7 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { ArrowLeft, Calendar, Clock, Tag, Briefcase, BarChart2, Plus, X } from "lucide-react";
+import {
+  ArrowLeft, Calendar, Clock, Tag, Briefcase, BarChart2,
+  Plus, X, ExternalLink, GitBranch,
+} from "lucide-react";
 import { getPublicCaseStudyBySlug } from "@/api/(public)/caseStudies";
 import SocialShareButton from "@/app/components/(public)/case-studies/SocialShareButtons";
 
@@ -17,7 +20,6 @@ function TableOfContents({ contentRef }) {
   const [isFixed, setIsFixed] = useState(true);
   const tocRef = useRef(null);
 
-  // Build headings list from the rendered content DOM
   useEffect(() => {
     if (!contentRef || !contentRef.current) return;
 
@@ -25,15 +27,12 @@ function TableOfContents({ contentRef }) {
       const elements = Array.from(
         contentRef.current.querySelectorAll("h2, h3, h4")
       );
-
       if (elements.length === 0) return;
 
       const list = [];
-
       elements.forEach((el, index) => {
         const text = el.textContent?.trim() || "";
         const level = parseInt(el.tagName[1]);
-
         let id = el.getAttribute("id");
 
         if (!id) {
@@ -62,7 +61,6 @@ function TableOfContents({ contentRef }) {
     return () => clearTimeout(timer);
   }, [contentRef]);
 
-  // Highlight the heading currently in view
   useEffect(() => {
     if (headings.length === 0) return;
 
@@ -71,7 +69,6 @@ function TableOfContents({ contentRef }) {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-
         if (visible.length > 0) {
           setActiveId(visible[0].target.getAttribute("id") || "");
         }
@@ -87,17 +84,13 @@ function TableOfContents({ contentRef }) {
     return () => observer.disconnect();
   }, [headings]);
 
-  // Switch fixed ↔ absolute when TOC would overlap/pass the article bottom
   useEffect(() => {
     const handleScroll = () => {
       if (!contentRef?.current || !tocRef.current) return;
-
       const contentRect = contentRef.current.getBoundingClientRect();
       const tocHeight = tocRef.current.offsetHeight;
-      const gap = 24; // 1.5rem = bottom-6
-
+      const gap = 24;
       const spaceBelow = contentRect.bottom - (window.innerHeight - gap - tocHeight - gap);
-
       setIsFixed(spaceBelow > 0);
     };
 
@@ -155,7 +148,7 @@ function TableOfContents({ contentRef }) {
                     ${h.level === 3 ? "pl-6" : ""}
                     ${h.level === 4 ? "pl-9" : ""}
                     ${activeId === h.id
-                      ? "bg-red-50 text-red-500 font-medium"
+                      ? "bg-[#e8f4f6] text-[#2a7a8a] font-medium"
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     }
                   `}
@@ -205,9 +198,7 @@ export default function CaseStudyDetailPage() {
   const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/case-studies/${slug}`;
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -229,7 +220,6 @@ export default function CaseStudyDetailPage() {
 
     const timeoutId = setTimeout(calculateTop, 100);
     calculateTop();
-
     window.addEventListener("resize", calculateTop);
     window.addEventListener("scroll", calculateTop);
 
@@ -261,7 +251,7 @@ export default function CaseStudyDetailPage() {
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center space-y-3">
           <p className="text-gray-400">Case study not found</p>
-          <Link href="/case-studies" className="text-sm text-red-500 hover:underline">
+          <Link href="/case-studies" className="text-sm text-[#2a7a8a] hover:underline">
             ← Back to Case Studies
           </Link>
         </div>
@@ -290,7 +280,6 @@ export default function CaseStudyDetailPage() {
         <div className="flex gap-8 items-start">
 
           {/* ── MAIN CONTENT ── */}
-          {/* position:relative is required so the absolute TOC fallback anchors here */}
           <div className="flex-1 min-w-0 space-y-8 relative">
 
             {/* Header */}
@@ -305,7 +294,7 @@ export default function CaseStudyDetailPage() {
                   <Link
                     key={cat._id}
                     href={`/case-studies/category/${cat.slug}`}
-                    className="text-[11px] font-bold uppercase tracking-widest text-red-500 hover:text-red-600 transition-colors"
+                    className="text-[11px] font-bold uppercase tracking-widest text-[#2a7a8a] hover:text-[#235f6e] transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -362,6 +351,34 @@ export default function CaseStudyDetailPage() {
                   ))}
                 </div>
               )}
+
+              {/* Project Links */}
+              {(cs.projectLinks?.live || cs.projectLinks?.github) && (
+                <div className="flex flex-wrap gap-3 pt-1">
+                  {cs.projectLinks.live && (
+                    
+                    <a  href={cs.projectLinks.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-[#2a7a8a] hover:bg-[#235f6e] px-4 py-2 rounded-lg transition-colors"
+                    >
+                      <ExternalLink size={14} />
+                      Live Project
+                    </a>
+                  )}
+                  {cs.projectLinks.github && (
+                    
+                    <a href={cs.projectLinks.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 bg-white border border-gray-200 hover:border-gray-400 hover:text-gray-900 px-4 py-2 rounded-lg transition-colors"
+                    >
+                      <GitBranch size={14} />
+                      View on GitHub
+                    </a>
+                  )}
+                </div>
+              )}
             </motion.div>
 
             {/* Featured Image */}
@@ -398,14 +415,14 @@ export default function CaseStudyDetailPage() {
                     key={i}
                     className="bg-white border border-gray-100 rounded-2xl p-4 text-center space-y-1"
                   >
-                    <p className="text-2xl font-black text-red-500">{m.value}</p>
+                    <p className="text-2xl font-black text-[#2a7a8a]">{m.value}</p>
                     <p className="text-xs text-gray-400">{m.label}</p>
                   </div>
                 ))}
               </motion.div>
             )}
 
-            {/* Challenge / Solution / Results - WITH contentRef ATTACHED */}
+            {/* Challenge / Solution / Results */}
             <div ref={contentRef}>
               {[
                 { label: "The Challenge", html: cs.challenge },
@@ -427,10 +444,10 @@ export default function CaseStudyDetailPage() {
                         prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
                         prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
                         prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-justify
-                        prose-a:text-red-500 prose-a:no-underline hover:prose-a:underline
-                        [&_a]:text-red-500! [&_a_*]:text-red-500!
-                        prose-strong:text-gray-800 [&_a_strong]:text-red-500
-                        prose-blockquote:border-red-500 prose-blockquote:text-gray-500
+                        prose-a:text-[#2a7a8a] prose-a:no-underline hover:prose-a:underline
+                        [&_a]:text-[#2a7a8a]! [&_a_*]:text-[#2a7a8a]!
+                        prose-strong:text-gray-800 [&_a_strong]:text-[#2a7a8a]
+                        prose-blockquote:border-[#2a7a8a] prose-blockquote:text-gray-500
                         prose-img:rounded-xl prose-img:shadow-md"
                       dangerouslySetInnerHTML={{ __html: html }}
                     />
@@ -444,10 +461,10 @@ export default function CaseStudyDetailPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="border-l-4 border-red-500 pl-6 py-2 space-y-2 mb-8"
+                  className="border-l-4 border-[#2a7a8a] pl-6 py-2 space-y-2 mb-8"
                 >
                   <p className="text-gray-600 italic text-base leading-relaxed text-justify">
-                    "{cs.testimonial.quote}"
+                    &ldquo;{cs.testimonial.quote}&rdquo;
                   </p>
                   <footer className="text-xs text-gray-400">
                     <span className="font-semibold text-gray-600">
@@ -472,7 +489,7 @@ export default function CaseStudyDetailPage() {
                   <Link
                     key={tag._id}
                     href={`/case-studies/tag/${tag.slug}`}
-                    className="text-xs border border-gray-200 text-gray-400 hover:border-red-300 hover:text-red-500 px-3 py-1 rounded-full transition-all"
+                    className="text-xs border border-gray-200 text-gray-400 hover:border-[#2a7a8a] hover:text-[#2a7a8a] px-3 py-1 rounded-full transition-all"
                   >
                     #{tag.name}
                   </Link>
@@ -480,7 +497,7 @@ export default function CaseStudyDetailPage() {
               </motion.div>
             )}
 
-            {/* Bottom section with Back to case studies link and Mobile share buttons */}
+            {/* Bottom — back link + mobile share */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -488,31 +505,29 @@ export default function CaseStudyDetailPage() {
               className="pt-4"
             >
               {isMobile ? (
-                <>
-                  <div className="flex flex-col  gap-4">
-                    <div className="flex items-center gap-3 w-full justify-center">
-                      <span className="text-xs text-gray-400 font-medium">Share this case study:</span>
-                      <SocialShareButton
-                        title={cs.title}
-                        description={cs.description}
-                        url={shareUrl}
-                        vertical={false}
-                      />
-                    </div>
-                    <div className="w-full border-t border-gray-100"></div>
-                    <Link
-                      href="/case-studies"
-                      className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors"
-                    >
-                      <ArrowLeft size={14} />
-                      Back to all cases
-                    </Link>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-3 w-full justify-center">
+                    <span className="text-xs text-gray-400 font-medium">Share this case study:</span>
+                    <SocialShareButton
+                      title={cs.title}
+                      description={cs.description}
+                      url={shareUrl}
+                      vertical={false}
+                    />
                   </div>
-                </>
+                  <div className="w-full border-t border-gray-100" />
+                  <Link
+                    href="/case-studies"
+                    className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-[#2a7a8a] transition-colors"
+                  >
+                    <ArrowLeft size={14} />
+                    Back to all cases
+                  </Link>
+                </div>
               ) : (
                 <Link
                   href="/case-studies"
-                  className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-[#2a7a8a] transition-colors"
                 >
                   <ArrowLeft size={14} />
                   Back to all case studies
@@ -520,8 +535,7 @@ export default function CaseStudyDetailPage() {
               )}
             </motion.div>
 
-            {/* ── FLOATING TOC WIDGET ── */}
-            {/* Rendered inside the article div so position:absolute fallback anchors correctly */}
+            {/* Floating TOC */}
             <TableOfContents contentRef={contentRef} />
 
           </div>{/* end flex-1 */}

@@ -28,8 +28,8 @@ const InstagramIcon = () => (
 const QUICK_LINKS_1 = [
     { label: "Home", href: "/" },
     { label: "About Me", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Blogs", href: "/blog" },
+    { label: "Case-Studies", href: "/case-studies" },
+    { label: "Contact", href: "/contact" },
 ];
 
 const SUPPORT_LINKS = [
@@ -38,13 +38,13 @@ const SUPPORT_LINKS = [
 ];
 
 const CONTACT_INFO = [
-    { icon: <Phone size={16} />, text: "98009778799", href: "tel:98009778799" },
-    { icon: <Mail size={16} />, text: "susan@gmail.com", href: "mailto:susan@gmail.com" },
+    { icon: <Phone size={16} />, text: "9818683813", href: "tel:9818683813" },
+    { icon: <Mail size={16} />, text: "sushantadhikari060@gmail.com", href: "mailto:sushantadhikari060@gmail.com" },
 ];
 
 const SOCIAL_LINKS = [
-    { href: "https://facebook.com", label: "Facebook", icon: <FacebookIcon /> },
-    { href: "https://linkedin.com", label: "LinkedIn", icon: <LinkedinIcon /> },
+    { href: "https://www.facebook.com/sushant.adhikari.927", label: "Facebook", icon: <FacebookIcon /> },
+    { href: "https://www.linkedin.com/in/susan-adhikari-4a084936b/", label: "LinkedIn", icon: <LinkedinIcon /> },
     { href: "https://instagram.com", label: "Instagram", icon: <InstagramIcon /> },
 ];
 
@@ -76,7 +76,7 @@ export default function Footer() {
                             </span>
                         </Link>
 
-                        <p className="text-[0.88rem] text-gray-500 leading-relaxed max-w-[220px]">
+                        <p className="text-[0.88rem] text-gray-500 leading-relaxed max-w-55">
                             Crafting high-performance digital solutions with a focus on clean architecture and premium user experience.
                         </p>
                     </div>

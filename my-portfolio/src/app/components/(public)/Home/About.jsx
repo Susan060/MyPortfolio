@@ -130,8 +130,8 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Download Resume */}
-          <motion.button
+{/* Download Resume */}
+          <motion.a
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -139,12 +139,13 @@ export default function About() {
             custom={5}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => {}}
+            href="/Susan_Adhikari_CV_v3.pdf"
+            download
             className="self-start flex items-center gap-2 px-6 py-3 bg-[#eaf5f7] hover:bg-[#d4ecf0] border border-[#2a7a8a]/25 text-[#1e6a7a] font-semibold text-sm rounded-xl transition-colors cursor-pointer mt-1"
           >
-            <Download size={15} />
-            Download Resume
-          </motion.button>
+              <Download size={15} />
+               Download CV
+            </motion.a>
 
         </div>
       </div>
