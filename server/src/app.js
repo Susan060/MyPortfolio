@@ -12,9 +12,9 @@ const tagRoutes=require('./routes/tag.routes.js')
 const app=express()
 
 const allowedOrigins = [
-  'https://susan-adhikari.com.np/',
-  'http://localhost:3000', 
-  // Add any other domains you need
+  'https://susan-adhikari.com.np',  // ✅ no trailing slash
+  'https://myportfolio-3d1.pages.dev',  // ✅ add pages.dev too
+  'http://localhost:3000',
 ];
 
 app.use((req, res, next) => {
