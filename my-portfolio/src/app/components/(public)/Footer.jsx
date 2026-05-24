@@ -45,7 +45,7 @@ const CONTACT_INFO = [
 const SOCIAL_LINKS = [
     { href: "https://www.facebook.com/sushant.adhikari.927", label: "Facebook", icon: <FacebookIcon /> },
     { href: "https://www.linkedin.com/in/susan-adhikari-4a084936b/", label: "LinkedIn", icon: <LinkedinIcon /> },
-    { href: "https://instagram.com", label: "Instagram", icon: <InstagramIcon /> },
+    { href: "https://www.instagram.com/sushant.560", label: "Instagram", icon: <InstagramIcon /> },
 ];
 
 export default function Footer() {

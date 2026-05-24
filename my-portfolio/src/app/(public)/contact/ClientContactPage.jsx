@@ -69,8 +69,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[0.68rem] font-bold tracking-widest text-gray-400 uppercase mb-0.5">EMAIL</p>
-                  <a href="mailto:hello@seostrategy.com" className="text-sm font-medium text-[#0d2d3a] hover:text-[#1e6a7a] transition-colors">
-                    hello@seostrategy.com
+                  <a href="mailto:sushantadhikari060@gmail.com" className="text-sm font-medium text-[#0d2d3a] hover:text-[#1e6a7a] transition-colors">
+                    sushantadhikari060@gmail.com
                   </a>
                 </div>
               </div>
@@ -81,8 +81,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[0.68rem] font-bold tracking-widest text-gray-400 uppercase mb-0.5">LINKEDIN</p>
-                  <a href="https://linkedin.com/in/seoexpert" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-[#0d2d3a] hover:text-[#1e6a7a] transition-colors">
-                    linkedin.com/in/seoexpert
+                  <a href="https://www.linkedin.com/in/susan-adhikari-4a084936b" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-[#0d2d3a] hover:text-[#1e6a7a] transition-colors">
+                    linkedin.com/in/susan-adhikari-4a084936b
                   </a>
                 </div>
               </div>
