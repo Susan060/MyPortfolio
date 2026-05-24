@@ -5,31 +5,31 @@ import { motion, useInView } from "framer-motion";
 
 const experiences = [
   {
-    title: "Intern — Full-Stack Developer",
-    period: "2024 — Early 2024",
-    description:
-      "Completed a 9-week internship building real-world MERN stack applications, contributing to REST API development, MongoDB schema design, and responsive React UI components under production conditions.",
-    align: "left",
-  },
-  {
     title: "Junior Full-Stack Developer",
     period: "Mid 2024 — 2025",
     description:
       "Developed and maintained full-stack web applications using the MERN stack and Next.js — implementing JWT authentication, Cloudinary image uploads, and TanStack Query for efficient client-side data fetching.",
-    align: "right",
+    align: "left",
   },
   {
     title: "Next.js Developer",
     period: "2025 — Early 2026",
     description:
       "Built production-grade Next.js projects with App Router, SSR/SSG, and optimized Core Web Vitals. Integrated third-party APIs and managed deployments on Vercel with environment-based configurations.",
-    align: "left",
+    align: "right",
   },
   {
     title: "Full-Stack Web Developer",
     period: "2026 — Present",
     description:
       "Designing and delivering end-to-end web solutions independently — from database architecture and Express backends to polished Next.js frontends — with a focus on performance, scalability, and clean code.",
+    align: "left",
+  },
+  {
+    title: "Full-Stack Developer Intern — Lumino Technology",
+    period: "Jan 29 — Apr 8, 2026",
+    description:
+      "Completed a 9-week internship at Lumino Technology Pvt. Ltd. building real-world MERN stack applications, contributing to REST API development, MongoDB schema design, and responsive React UI components under production conditions.",
     align: "right",
   },
 ];
