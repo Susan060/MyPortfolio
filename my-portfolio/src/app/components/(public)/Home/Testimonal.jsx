@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with Susan was a breath of fresh air. he's a fantastic communicator and a brilliant developer who actually cares about the end-user.",
+      "Working with Susan was a breath of fresh air. He's a fantastic communicator and a brilliant developer who actually cares about the end-user.",
     name: "Prabesh Ghimire",
     role: "SEO Specialist",
     avatar: "/Client3.jpeg",
@@ -32,7 +32,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with her was a smooth experience. She built a clean and responsive website, communicated well, and was always open to feedback throughout the project.",
+      "Working with her was a smooth experience. He built a clean and responsive website, communicated well, and was always open to feedback throughout the project.",
     name: "Ram Prasad Poudel",
     role: "President, FancyAssociationChitwan",
     avatar: "/President.jpg",
