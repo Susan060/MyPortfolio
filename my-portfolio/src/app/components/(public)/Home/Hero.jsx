@@ -25,8 +25,8 @@ const fadeIn = {
 
 const stats = [
   { value: "2+",  label: "Years Exp." },
-  { value: "20+", label: "Completed" },
-  { value: "98%", label: "Happy Clients" },
+  { value: "6+", label: "Completed" },
+  { value: "100%", label: "Commitment to clean code and Growth" },
 ];
 
 export default function HeroSection() {

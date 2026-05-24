@@ -16,26 +16,26 @@ const fadeUp = {
 const testimonials = [
   {
     quote:
-      "Susan's ability to take our vision and turn it into a high-performing reality was incredible. Her code is clean, and her eye for UI is unmatched.",
-    name: "Alex Chen",
-    role: "CEO, Nexa Startups",
-    avatar: "/avatars/alex.jpg",
-    rating: 5,
+      "Susan's ability to take our vision and turn it into a high-performing reality was incredible. His code is clean, and his eye for UI is unmatched.",
+    name: "Kalyan Gharti Gurung",
+    role: "UI/UX Designer,lumino Technology",
+    avatar: "/Kalyan.jpg",
+    rating: 4,
   },
   {
     quote:
-      "Working with Susan was a breath of fresh air. She's a fantastic communicator and a brilliant developer who actually cares about the end-user.",
-    name: "Sarah Jenkins",
-    role: "Marketing Director, Flow Agency",
-    avatar: "/avatars/sarah.jpg",
-    rating: 5,
+      "Working with Susan was a breath of fresh air. he's a fantastic communicator and a brilliant developer who actually cares about the end-user.",
+    name: "Prabesh Ghimire",
+    role: "SEO Specialist",
+    avatar: "/Client3.jpeg",
+    rating: 4,
   },
   {
     quote:
-      "The custom CRM she built for our team has saved us dozens of hours every week. Truly a top-tier professional developer.",
-    name: "David Miller",
-    role: "Tech Lead, Orbit Fintech",
-    avatar: "/avatars/david.jpg",
+      "Working with her was a smooth experience. She built a clean and responsive website, communicated well, and was always open to feedback throughout the project.",
+    name: "Ram Prasad Poudel",
+    role: "President, FancyAssociationChitwan",
+    avatar: "/President.jpg",
     rating: 5,
   },
 ];
